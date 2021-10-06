@@ -1,0 +1,47 @@
+.calculator {
+	max-width: 50%;
+	margin: auto;
+}
+
+.displayArea {
+	background-color: #171717;
+	color: white;
+	width: 100%;
+	text-align: right;
+	padding: 15px;
+	font-size: 20px;
+}
+
+.displayArea::-webkit-inner-spin-button,
+.displayArea::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+}
+
+.options > section {
+	display: flex;
+}
+
+#area50 {
+	width: 50%;
+}
+
+#area75 {
+	width: 75%;
+}
+
+.options > section button {
+	padding: 20px;
+	font-size: 20px;
+	width: 25%;
+	cursor: pointer;
+}
+
+.options section button:last-child {
+	background-color: orange;
+	color: white;
+	font-size: 20px;
+}
+
+.options section button:last-child:hover {
+	color: blue;
+}

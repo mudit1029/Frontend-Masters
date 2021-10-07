@@ -92,4 +92,5 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.querySelector('.displayArea').value = eval(value.substr(0,sign--) + op + value.substr(sign+=2,value.length))
 			}	
 		}
-	}	
+	}
+});		

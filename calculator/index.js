@@ -87,16 +87,32 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.querySelector('.equal').onclick = () => {
 		let value = document.querySelector('.displayArea').value;
 		for(i=0; i<value.length; i++) {
-			data = value.substr(i);
-			if(data === "+" || data === "-" || data === "*" || data === "÷") {	
+			op = value.charAt(i);
+			if(op === "+" || op === "-" || op === "*" || op === "÷") {	
 				let sign = i;
-				sign = sign--;
-				calculate = value.substr(0,sign) + data + value.substr(sign+2, value.length)
-				document.querySelector('.displayArea').value = calculate;
-
+				document.querySelector('.displayArea').value = calculate(value.substr(0,sign--),value.substr(sign+=2,value.length),op)
 			}	
 		}
 	}	
 
+//created by atif 
+function calculate(num1,num2,operator) {
+	if(operator === "+"){
+		let x = parseInt(num1) + parseInt(num2)
+		return x
+	}
+	if(operator === "-"){
+		let x = num1 - num2
+		return x
+	}
+	if(operator === "*"){
+		let x = num1 * num2
+		return x
+	}
+	if(operator === "÷"){
+		let x = num1 / num2
+		return x
+	}
+}
 
 });

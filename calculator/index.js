@@ -88,10 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		let value = document.querySelector('.displayArea').value;
 		for(i=0; i<value.length; i++) {
 			data = value.substr(i);
+			console.log(data)
 			if(data === "+" || data === "-" || data === "*" || data === "÷") {	
 				let sign = i;
 				sign = sign--;
 				calculate = value.substr(0,sign) + data + value.substr(sign+2, value.length)
+				console.log(calculate)
 				document.querySelector('.displayArea').value = calculate;
 
 			}	

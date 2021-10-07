@@ -1,12 +1,12 @@
 .calculator {
-	max-width: 50%;
+	max-width: 400px;
 	margin: auto;
 }
 
 .displayArea {
 	background-color: #171717;
 	color: white;
-	width: 100%;
+	width: 366px;
 	text-align: right;
 	padding: 15px;
 	font-size: 20px;

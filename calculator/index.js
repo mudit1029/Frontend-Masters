@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		}	
 	}
 
-
 	document.querySelector('.equal').onclick = () => {
 		let value = document.querySelector('.displayArea').value;
 		for(i=0; i<value.length; i++) {
+<<<<<<< HEAD
 			data = value.substr(i);
 			console.log(data)
 			if(data === "+" || data === "-" || data === "*" || data === "÷") {	
@@ -96,9 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				console.log(calculate)
 				document.querySelector('.displayArea').value = calculate;
 
+=======
+			op = value.charAt(i);
+			if(op === "+" || op === "-" || op === "*" || op === "÷") {	
+				let sign = i;
+				document.querySelector('.displayArea').value = eval(value.substr(0,sign--) + op + value.substr(sign+=2,value.length))
+>>>>>>> bc7f66c75b7588db309244085f354dea18db48e0
 			}	
 		}
-	}	
-
-
-});
+	}
+});		

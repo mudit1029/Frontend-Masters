@@ -19,78 +19,49 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});	
 
-	document.querySelector('.divide').onclick = () => {
-		let value = document.querySelector('.displayArea').value;
-		length = value.length;
-		signChange = length--;
-		lastValue = value.substr(length);
-		if(lastValue === "+" || lastValue === "-" || lastValue === "*" || lastValue === "÷") {
-			signChange = length--;
-			newValue = value.substr(0,signChange) + "÷";
-			document.querySelector('.displayArea').value = newValue;
-		}
-		else {
-			insertedValue = value + "÷";
-			document.querySelector('.displayArea').value = insertedValue;
-		}	
-	}
+	document.querySelector('.divide').onclick = checkMultipleSign
 
-	document.querySelector('.multiply').onclick = () => {
-		let value = document.querySelector('.displayArea').value;
-		length = value.length;
-		signChange = length--
-		lastValue = value.substr(length);
-		if(lastValue === "+" || lastValue === "-" || lastValue === "*" || lastValue === "÷") {
-			signChange = length--;
-			newValue = value.substr(0,signChange) + "*";
-			document.querySelector('.displayArea').value = newValue;
-		}
-		else {
-			insertedValue = value + "*";
-			document.querySelector('.displayArea').value = insertedValue;
-		}	
-	}
+	document.querySelector('.multiply').onclick = checkMultipleSign
 
-	document.querySelector('.subtract').onclick = () => {
-		let value = document.querySelector('.displayArea').value;
-		length = value.length;
-		signChange = length--
-		lastValue = value.substr(length);
-		if(lastValue === "+" || lastValue === "-" || lastValue === "*" || lastValue === "÷") {
-			signChange = length--;
-			newValue = value.substr(0,signChange) + "-";
-			document.querySelector('.displayArea').value = newValue;
-		}
-		else {
-			insertedValue = value + "-";
-			document.querySelector('.displayArea').value = insertedValue;
-		}	
-	}
+	document.querySelector('.subtract').onclick = checkMultipleSign
 
-	document.querySelector('.add').onclick = () => {
-		let value = document.querySelector('.displayArea').value;
-		length = value.length;
-		signChange = length--
-		lastValue = value.substr(length);
-		if(lastValue === "+" || lastValue === "-" || lastValue === "*" || lastValue === "÷") {
-			signChange = length--;
-			newValue = value.substr(0,signChange) + "+";
-			document.querySelector('.displayArea').value = newValue;
-		}
-		else {
-			insertedValue = value + "+";
-			document.querySelector('.displayArea').value = insertedValue;
-		}	
-	}
+	document.querySelector('.add').onclick = checkMultipleSign
 
 	document.querySelector('.equal').onclick = () => {
 		let value = document.querySelector('.displayArea').value;
-		for(i=0; i<value.length; i++) {
-			op = value.charAt(i);
-			if(op === "+" || op === "-" || op === "*" || op === "÷") {	
-				let sign = i;
-				document.querySelector('.displayArea').value = eval(value.substr(0,sign--) + op + value.substr(sign+=2,value.length))
+		if(value.length === 0) {
+			document.querySelector('.displayArea').value = "";
+		}
+		else {
+			answer = eval(value)
+			document.querySelector('.displayArea').value = answer;
+		}	
+	}	
+
+});		
+
+function checkMultipleSign() {
+	if(document.querySelector('.displayArea').value.length === 0){
+		document.querySelector('.displayArea').value = "";
+	}
+	else {
+		let value = document.querySelector('.displayArea').value;
+		length = value.length;
+		lastValue = value.charAt(length-=1);
+		if(lastValue === "+" || lastValue === "-" || lastValue === "*" || lastValue === "/") {
+			if(lastValue === event.target.dataset.sign){
+				document.querySelector('.displayArea').value = value;
+			}
+			else {
+				signChange = length--;
+				newValue = value.substr(0,signChange) + event.target.dataset.sign;
+				document.querySelector('.displayArea').value = newValue;
 			}	
 		}
-	}
-});		
+		else {
+			sign = event.target.dataset.sign;
+			insertedValue = value + sign;
+			document.querySelector('.displayArea').value = insertedValue;
+		}
+	}	
+}
